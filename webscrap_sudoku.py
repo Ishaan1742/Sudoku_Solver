@@ -32,7 +32,6 @@ for row in rows:
     grid.append(list_)
 
 greedyBacktrack(grid)
-time.sleep(5)
 grid = ConvertToChar(grid)
 printBoard(grid)
 EnterBoard(grid)
