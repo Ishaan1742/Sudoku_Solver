@@ -1,22 +1,14 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jun 23 19:06:35 2022
-
-@author: Krithikavvgreat
-"""
-
-import webbrowser
-import requests
+from selenium import webdriver
 from bs4 import BeautifulSoup
+from utilities import printBoard, ConvertToChar, EnterBoard
 from greedyBacktrack import greedyBacktrack
-from utilities import EnterBoard, printBoard, ConvertToChar
-import time
 
 url = "https://nine.websudoku.com/?"
-#launch url in browser
-webbrowser.open(url)
-page = requests.get(url)
-soup = BeautifulSoup(page.content, "html.parser")
+PATH = "/Users/ishaan/PycharmProjects/Sudoku_Solver/msedgedriver"
+driver = webdriver.Edge(PATH)
+driver.get(url)
+page_content = driver.page_source
+soup = BeautifulSoup(page_content, "html.parser")
 table = soup.find_all("table", {"id":"puzzle_grid"})[0]
 rows = table.find_all("tr")
 grid = []
