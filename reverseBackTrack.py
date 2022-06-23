@@ -11,8 +11,8 @@ from utilities import isSafe, printBoard
 # than the top/left halves.
 
 def reverseBacktrack(board):
-    for row in range(9, -1, -1):
-        for col in range(9, -1, -1):
+    for row in range(8, -1, -1):
+        for col in range(8, -1, -1):
             if board[row][col] == 0:
                 for num in range(1, 10):
                     if isSafe(board, row, col, num):

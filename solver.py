@@ -1,6 +1,7 @@
 from Backtrack import *
 from greedyBacktrack import *
 from spiralBacktrack import *
+from reverseBackTrack import *
 from utilities import *
 import time
 
@@ -12,11 +13,11 @@ grid = ConvertToChar(grid)
 
 time.sleep(5) #click on the grid (manually)
 
-#Enter the numbers into the grid on www.sudoku.com
-EnterBoard(grid)
-
 #Display solution
 printBoard(grid)
+
+#Enter the numbers into the grid on www.sudoku.com
+EnterBoard(grid)
 
 
 

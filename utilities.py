@@ -49,11 +49,14 @@ def EnterBoard(board): #enter the board into the sudoku website
     for i in range(9):
         for j in range(9):
             pg.press(board[i][j])
-            pg.hotkey('right')
+            if(j != 8):
+                pg.hotkey('right')
             if(j == 8 and i != 8):
                 pg.hotkey('down')
                 for i in range(8):
                     pg.hotkey('left')
+            if(j == 8 and i == 8):
+                pg.hotkey('enter')
 
 def ConvertToChar(board):
     grid_char = []
