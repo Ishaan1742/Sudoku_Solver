@@ -4,6 +4,8 @@
 #the number, and False if the cell is not safe to fill with
 #the number.
 
+import pyautogui as pg
+
 def isSafe(board, row, col, num):
     # Check if 'num' is not already present in row
     for i in range(9):
@@ -42,3 +44,21 @@ def getInput():
     for i in range(9): 
         board.append(list(map(int, input().split()))) #get the input for each row and append it to the board
     return board
+    
+def EnterBoard(board):
+    for i in range(9):
+        for j in range(9):
+            pg.press(board[i][j])
+            pg.hotkey('right')
+            if(j == 8 and i != 8):
+                pg.hotkey('down')
+                for i in range(8):
+                    pg.hotkey('left')
+
+def ConvertToChar(board):
+    grid_char = []
+    for i in range(9):
+        grid_char.append([])
+        for j in range(9):
+            grid_char[i].append(str(board[i][j]))
+    return grid_char
