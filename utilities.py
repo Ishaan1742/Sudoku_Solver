@@ -45,7 +45,7 @@ def getInput():
         board.append(list(map(int, input().split()))) #get the input for each row and append it to the board
     return board
     
-def EnterBoard(board):
+def EnterBoard(board): #enter the board into the sudoku website
     for i in range(9):
         for j in range(9):
             pg.press(board[i][j])
