@@ -19,7 +19,7 @@ page = requests.get(url)
 soup = BeautifulSoup(page.content, "html.parser")
 table = soup.find_all("table", {"id":"puzzle_grid"})[0]
 rows = table.find_all("tr")
-input_ = []
+grid = []
 for row in rows:
     cells = row.find_all("td")
     list_ = []
@@ -29,11 +29,11 @@ for row in rows:
         except: 
             x = 0
         list_.append(x)
-    input_.append(list_)
+    grid.append(list_)
 
-greedyBacktrack(input_)
+greedyBacktrack(grid)
 time.sleep(5)
-input_ = ConvertToChar(input_)
-printBoard(input_)
-EnterBoard(input_)
+grid = ConvertToChar(grid)
+printBoard(grid)
+EnterBoard(grid)
         
