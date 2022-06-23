@@ -35,3 +35,10 @@ def printBoard(board):
             print("\n- - - - - - - - - - -")
         else:
             print("\n")
+
+def getInput():
+    board = []
+    #get the input from the user for a 9*9 integer matrix
+    for i in range(9):
+        board.append(list(map(int, input().split())))
+    return board
