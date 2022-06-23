@@ -39,6 +39,6 @@ def printBoard(board):
 def getInput():
     board = []
     #get the input from the user for a 9*9 integer matrix
-    for i in range(9):
-        board.append(list(map(int, input().split())))
+    for i in range(9): 
+        board.append(list(map(int, input().split()))) #get the input for each row and append it to the board
     return board
