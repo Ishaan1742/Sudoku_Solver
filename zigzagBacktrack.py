@@ -32,18 +32,19 @@ def zigzagBacktrack(board):
 
     return True # board is filled
 
-def zigzagBacktrack_visualiser(board):
+def zigzagBacktrack_visualiser(board, curr_row = 0, curr_col = 0):
     row = 0
     col = 0
     while row < 9 and col<9:
         if board[row][col] == 0:
-            for num in range(1, 10):
-                if isSafe(board, row, col, num):
-                    assign(board, row, col, num) # fill the cell with the number
-                    if zigzagBacktrack_visualiser(board):
-                        return True # board is filled
-                    assign(board, row, col, 0) # backtrack
-            return False # board is not filled
+                for num in range(1, 10):
+                    if isSafe(board, row, col, num):
+                        curr_row, curr_col = assign(board, row, col, num, curr_row, curr_col) # fill the cell with the number
+                        return_value, curr_row, curr_col = zigzagBacktrack_visualiser(board, curr_row, curr_col)
+                        if return_value:
+                            return True, curr_row, curr_col # board is filled
+                        curr_row, curr_col = assign(board, row, col, 0, curr_row, curr_col) # backtrack
+                return False, curr_row, curr_col # board is not filled
         if(row%2 == 0):
             if(col < 8):
                 col += 1
@@ -55,7 +56,7 @@ def zigzagBacktrack_visualiser(board):
             else:
                 row += 1
 
-    return True # board is filled
+    return True, curr_row, curr_col # board is filled
 
 if '__main__' == __name__:
     board = [[1, 2, 3, 4, 5, 6, 7, 8, 9],

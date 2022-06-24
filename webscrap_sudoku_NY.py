@@ -1,4 +1,3 @@
-from turtle import back
 import webbrowser
 import requests
 from bs4 import BeautifulSoup
@@ -30,11 +29,11 @@ def direct_enter(grid):
     greedyBacktrack(grid) # solve the puzzle using greedy backtrack
     grid = ConvertToChar(grid) # convert the grid to characters
     printBoard(grid) # print the grid
-    time.sleep(0.5) # wait for 0.5 seconds
+    time.sleep(1) # wait for 1 second
     EnterBoard(grid) # enter the grid into the website
 
-time.sleep(0.5) # wait for 0.5 second
-reverseBacktrack_visualiser(grid) # visualise the backtrack
+time.sleep(1) # wait for 1 second
+zigzagBacktrack_visualiser(grid) # visualise the backtrack
 #direct_enter(grid) # enter the grid into the website
 
 
