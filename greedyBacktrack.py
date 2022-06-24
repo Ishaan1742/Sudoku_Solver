@@ -32,7 +32,7 @@ def greedyBacktrack(board):
             board[row][col] = 0 #backtrack
     return False #board is not filled
 
-def greedyBacktrack_visualiser(board):
+def greedyBacktrack_visualiser(board, curr_row = 0, curr_col = 0):
     #greedy approach by trying to find the empty cell with minimum possibilities.
     min = 9
     for i in range(9):
@@ -47,14 +47,15 @@ def greedyBacktrack_visualiser(board):
                     row = i
                     col = j
     if(min == 9):
-        return True #board is filled
+        return True, curr_row, curr_col #board is filled
     for val in range(1,10):
         if(isSafe(board, row, col, val)):
-            assign(board, row, col, val) #fill the cell with the number
-            if(greedyBacktrack_visualiser(board)):
-                return True #board is filled
-            assign(board, row, col, 0) #backtrack
-    return False #board is not filled
+            curr_row, curr_col = assign(board, row, col, val, curr_row, curr_col) #fill the cell with the number
+            return_value, curr_row, curr_col = greedyBacktrack_visualiser(board ,curr_row, curr_col)
+            if(return_value):
+                return True, curr_row, curr_col #board is filled
+            curr_row, curr_col = assign(board, row, col, 0, curr_row, curr_col) #backtrack
+    return False, curr_row, curr_col #board is not filled
 
 if '__main__' == __name__:
     board = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
