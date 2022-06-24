@@ -46,18 +46,25 @@ def getInput():
         board.append(list(map(int, input().split()))) #get the input for each row and append it to the board
     return board
 
-def assign(board, row, col, num):
+def assign(board, row, col, num, curr_row = 0, curr_col = 0):
     board[row][col] = num
     #go to cell
-    pg.press('down', presses = row)
-    pg.press('right', presses = col)
+    if(row<curr_row):
+        pg.press('up', presses=curr_row-row)
+    elif(row>curr_row):
+        pg.press('down', presses=row-curr_row)
+    if(col<curr_col):
+        pg.press('left', presses=curr_col-col)
+    elif(col>curr_col):
+        pg.press('right', presses=col-curr_col)
+    #enter number
     if(num == 0):
         pg.press('backspace')
     else:
         pg.press(str(num))
-    #go back to top left
-    pg.press('left', presses = col)
-    pg.press('up', presses = row)
+    curr_row = row
+    curr_col = col
+    return curr_row, curr_col
 
     
 def EnterBoard(board): #enter the board into the sudoku website
