@@ -51,7 +51,7 @@ def greedyBacktrack_visualiser(board):
     for val in range(1,10):
         if(isSafe(board, row, col, val)):
             assign(board, row, col, val) #fill the cell with the number
-            if(greedyBacktrack(board)):
+            if(greedyBacktrack_visualiser(board)):
                 return True #board is filled
             assign(board, row, col, 0) #backtrack
     return False #board is not filled

@@ -11,7 +11,7 @@ from reverseBacktrack import reverseBacktrack
 from utilities import ConvertToChar, EnterBoard, printBoard
 import time
 
-difficulty = "medium"
+difficulty = "hard"
 
 url = "https://www.nytimes.com/puzzles/sudoku/" + difficulty
 
@@ -34,6 +34,7 @@ def direct_enter(grid):
     EnterBoard(grid) # enter the grid into the website
 
 time.sleep(0.5) # wait for 0.5 second
-backtrack_visualiser(grid) # visualise the backtrack
+greedyBacktrack_visualiser(grid) # visualise the backtrack
+#direct_enter(grid) # enter the grid into the website
 
 
