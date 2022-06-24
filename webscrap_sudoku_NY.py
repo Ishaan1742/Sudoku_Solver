@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 24 08:53:03 2022
-
-@author: Krithikavvgreat
-"""
-
-from multiprocessing.connection import wait
 import webbrowser
 import requests
 from bs4 import BeautifulSoup
@@ -13,6 +5,8 @@ import json
 import numpy as np
 from Backtrack import backtrack
 from greedyBacktrack import greedyBacktrack
+from spiralBacktrack import spiralBacktrack
+from reverseBacktrack import reverseBacktrack
 from utilities import ConvertToChar, EnterBoard, printBoard
 import time
 
