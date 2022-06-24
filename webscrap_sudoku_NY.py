@@ -18,7 +18,7 @@ page = requests.get(url)
 #open page in webbrowser
 webbrowser.open(url)
 
-soup = BeautifulSoup(page.content, "html.parser")
+soup = BeautifulSoup(page.content, "html.parser") 
 table = soup.find_all("div", {"class":"pz-game-screen"})[0]
 script = table.find_all("script", {"type":"text/javascript"})
 text = script[0].get_text().split("=")[1]
@@ -33,7 +33,7 @@ def direct_enter(grid):
     EnterBoard(grid) # enter the grid into the website
 
 time.sleep(1) # wait for 1 second
-zigzagBacktrack_visualiser(grid) # visualise the backtrack
+greedyBacktrack_visualiser(grid) # visualise the backtrack
 #direct_enter(grid) # enter the grid into the website
 
 
