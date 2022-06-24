@@ -16,7 +16,7 @@ from greedyBacktrack import greedyBacktrack
 from utilities import ConvertToChar, EnterBoard, printBoard
 import time
 
-difficulty = "medium"
+difficulty = "hard"
 
 url = "https://www.nytimes.com/puzzles/sudoku/" + difficulty
 
@@ -31,7 +31,7 @@ text = script[0].get_text().split("=")[1]
 Dict = json.loads(text)
 grid = np.array( Dict[difficulty]["puzzle_data"]["puzzle"] ).reshape(9,9).tolist()
 
-backtrack(grid) # solve the puzzle using greedy backtrack
+greedyBacktrack(grid) # solve the puzzle using greedy backtrack
 grid = ConvertToChar(grid) # convert the grid to characters
 printBoard(grid) # print the grid
 time.sleep(2)

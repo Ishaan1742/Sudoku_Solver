@@ -5,7 +5,7 @@
 #the number.
 
 import pyautogui as pg
-import time
+pg.PAUSE = 0
 
 def isSafe(board, row, col, num):
     # Check if 'num' is not already present in row
