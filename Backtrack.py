@@ -21,18 +21,19 @@ def backtrack(board):
                 return False # board is not filled
     return True # board is filled
 
-def backtrack_visualiser(board):
+def backtrack_visualiser(board, curr_row = 0, curr_col = 0):
     for row in range(9):
         for col in range(9):
             if board[row][col] == 0:
                 for num in range(1, 10):
                     if isSafe(board, row, col, num):
-                        assign(board, row, col, num) # fill the cell with the number
-                        if backtrack_visualiser(board):
-                            return True # board is filled
-                        assign(board, row, col, 0) # backtrack
-                return False # board is not filled
-    return True # board is filled
+                        curr_row, curr_col = assign(board, row, col, num, curr_row, curr_col) # fill the cell with the number
+                        return_value, curr_row, curr_col = backtrack_visualiser(board, curr_row, curr_col)
+                        if return_value:
+                            return True, curr_row, curr_col # board is filled
+                        curr_row, curr_col = assign(board, row, col, 0, curr_row, curr_col) # backtrack
+                return False, curr_row, curr_col # board is not filled
+    return True, curr_row, curr_col # board is filled
 
 if '__main__' == __name__:
     board = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
