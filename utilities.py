@@ -5,6 +5,7 @@
 #the number.
 
 import pyautogui as pg
+import time
 
 def isSafe(board, row, col, num):
     # Check if 'num' is not already present in row
@@ -50,15 +51,14 @@ def EnterBoard(board): #enter the board into the sudoku website
         for j in range(9):
             pg.press(board[i][j])
             if(j != 8):
-                pg.hotkey('right')
+                pg.press('right')
             if(j == 8 and i != 8):
-                pg.hotkey('down')
-                for i in range(8):
-                    pg.hotkey('left')
+                pg.press('down')
+                pg.press('left', presses = 8)
             if(j == 8 and i == 8):
-                pg.hotkey('enter')
+                pg.press('enter')
 
-def ConvertToChar(board):
+def ConvertToChar(board): #convert the board to characters for pyautogui to enter
     grid_char = []
     for i in range(9):
         grid_char.append([])
