@@ -45,6 +45,24 @@ def getInput():
     for i in range(9): 
         board.append(list(map(int, input().split()))) #get the input for each row and append it to the board
     return board
+
+def assign(board, row, col, num):
+    board[row][col] = num
+    #go to cell
+    if(row>0):
+        pg.press('down', presses = row)
+    if(col>0):
+        pg.press('right', presses = col)
+    if(num == 0):
+        pg.press('backspace')
+    else:
+        pg.press(str(num))
+    #go back to top left
+    if(col>0):
+        pg.press('left', presses = col)
+    if(row>0):
+        pg.press('up', presses = row)
+
     
 def EnterBoard(board): #enter the board into the sudoku website
     for i in range(9):

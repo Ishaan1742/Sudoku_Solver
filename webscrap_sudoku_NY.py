@@ -1,21 +1,22 @@
+from turtle import back
 import webbrowser
 import requests
 from bs4 import BeautifulSoup
 import json
 import numpy as np
-from Backtrack import backtrack
-from greedyBacktrack import greedyBacktrack
+from Backtrack import backtrack, backtrack_visualiser
+from greedyBacktrack import greedyBacktrack, greedyBacktrack_visualiser
 from spiralBacktrack import spiralBacktrack
 from reverseBacktrack import reverseBacktrack
 from utilities import ConvertToChar, EnterBoard, printBoard
 import time
 
-difficulty = "hard"
+difficulty = "medium"
 
 url = "https://www.nytimes.com/puzzles/sudoku/" + difficulty
 
 page = requests.get(url)
-#open page in webbrowser and wait for it to load
+#open page in webbrowser
 webbrowser.open(url)
 
 soup = BeautifulSoup(page.content, "html.parser")
@@ -32,6 +33,7 @@ def direct_enter(grid):
     time.sleep(0.5) # wait for 0.5 seconds
     EnterBoard(grid) # enter the grid into the website
 
-direct_enter(grid)
+time.sleep(0.5) # wait for 0.5 second
+backtrack_visualiser(grid) # visualise the backtrack
 
 

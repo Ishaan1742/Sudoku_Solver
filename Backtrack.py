@@ -1,4 +1,4 @@
-from utilities import isSafe, printBoard
+from utilities import isSafe, printBoard, assign
 
 # Backtrack algorithm is a recursive algorithm that tries to fill the board
 # with numbers in a way that satisfies the constraints. It does this by following 
@@ -18,6 +18,19 @@ def backtrack(board):
                         if backtrack(board):
                             return True # board is filled
                         board[row][col] = 0 # backtrack
+                return False # board is not filled
+    return True # board is filled
+
+def backtrack_visualiser(board):
+    for row in range(9):
+        for col in range(9):
+            if board[row][col] == 0:
+                for num in range(1, 10):
+                    if isSafe(board, row, col, num):
+                        assign(board, row, col, num) # fill the cell with the number
+                        if backtrack_visualiser(board):
+                            return True # board is filled
+                        assign(board, row, col, 0) # backtrack
                 return False # board is not filled
     return True # board is filled
 

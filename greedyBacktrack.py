@@ -1,4 +1,4 @@
-from utilities import isSafe, printBoard
+from utilities import isSafe, printBoard, assign
 
 # Greedy Backtrack follows a greedy strategy wherein it starts filling numbers 
 # in the board from the cell which has the least number of possible options.
@@ -30,6 +30,30 @@ def greedyBacktrack(board):
             if(greedyBacktrack(board)):
                 return True #board is filled
             board[row][col] = 0 #backtrack
+    return False #board is not filled
+
+def greedyBacktrack_visualiser(board):
+    #greedy approach by trying to find the empty cell with minimum possibilities.
+    min = 9
+    for i in range(9):
+        for j in range(9):
+            if(board[i][j] == 0):
+                count = 0
+                for val in range(1,10):
+                    if(isSafe(board, i, j, val)):
+                        count = count + 1 #count the number of possibilities for the cell
+                if(count < min): #if the number of possibilities is less than the current minimum, update the minimum
+                    min = count
+                    row = i
+                    col = j
+    if(min == 9):
+        return True #board is filled
+    for val in range(1,10):
+        if(isSafe(board, row, col, val)):
+            assign(board, row, col, val) #fill the cell with the number
+            if(greedyBacktrack(board)):
+                return True #board is filled
+            assign(board, row, col, 0) #backtrack
     return False #board is not filled
 
 if '__main__' == __name__:
