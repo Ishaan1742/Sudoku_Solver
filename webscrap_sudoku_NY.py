@@ -25,8 +25,13 @@ text = script[0].get_text().split("=")[1]
 Dict = json.loads(text)
 grid = np.array( Dict[difficulty]["puzzle_data"]["puzzle"] ).reshape(9,9).tolist()
 
-greedyBacktrack(grid) # solve the puzzle using greedy backtrack
-grid = ConvertToChar(grid) # convert the grid to characters
-printBoard(grid) # print the grid
-time.sleep(2)
-EnterBoard(grid) # enter the grid into the website
+def direct_enter(grid):
+    greedyBacktrack(grid) # solve the puzzle using greedy backtrack
+    grid = ConvertToChar(grid) # convert the grid to characters
+    printBoard(grid) # print the grid
+    time.sleep(0.5) # wait for 0.5 seconds
+    EnterBoard(grid) # enter the grid into the website
+
+direct_enter(grid)
+
+
