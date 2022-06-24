@@ -1,15 +1,13 @@
 from utilities import isSafe, printBoard, assign
 
-# Spiral Backtracking is another modified version of the Backtracking algorithm.
+# zigzag Backtracking is another modified version of the Backtracking algorithm.
 # Instead of picking the next cell top to bottom and left to right, it 
-# picks the next cell in an inward spiral.
-# The Algorithm tends to do well when the majority entries near 4 edges 
-# are prefilled. Interestingly, this Algorithm is significantly slower 
-# than normal Backtracking Algorithm in most cases. 
-# The reason for this might lie in the nature of Sudoku, which makes choosing 
-# next cells spirally a poor choice.
+# picks the next cell in a zigzag fashion. This is done by first picking the
+# top left cell and then moving to the right and then down and then to the
+# left and then down. This is done until the bottom right cell is reached.
+# It returns True if the board is filled and False if the board is not filled.
 
-def spiralBacktrack(board):
+def zigzagBacktrack(board):
     row = 0
     col = 0
     while row < 9 and col<9:
@@ -17,7 +15,7 @@ def spiralBacktrack(board):
             for num in range(1, 10):
                 if isSafe(board, row, col, num):
                     board[row][col] = num # fill the cell with the number
-                    if spiralBacktrack(board):
+                    if zigzagBacktrack(board):
                         return True # board is filled
                     board[row][col] = 0 # backtrack
             return False # board is not filled
@@ -34,7 +32,7 @@ def spiralBacktrack(board):
 
     return True # board is filled
 
-def spiralBacktrack_visualiser(board):
+def zigzagBacktrack_visualiser(board):
     row = 0
     col = 0
     while row < 9 and col<9:
@@ -42,7 +40,7 @@ def spiralBacktrack_visualiser(board):
             for num in range(1, 10):
                 if isSafe(board, row, col, num):
                     assign(board, row, col, num) # fill the cell with the number
-                    if spiralBacktrack_visualiser(board):
+                    if zigzagBacktrack_visualiser(board):
                         return True # board is filled
                     assign(board, row, col, 0) # backtrack
             return False # board is not filled
@@ -69,7 +67,7 @@ if '__main__' == __name__:
             [3, 0, 5, 6, 7, 8, 0, 1, 2],
             [6, 7, 0, 9, 1, 2, 3, 0, 5],
             [9, 1, 2, 3, 4, 5, 6, 7, 8]]
-    if spiralBacktrack(board):
+    if zigzagBacktrack(board):
         print("Sudoku solved")
         printBoard(board)
     else:

@@ -1,6 +1,6 @@
 from Backtrack import *
 from greedyBacktrack import *
-from spiralBacktrack import *
+from zigzagBacktrack import *
 from reverseBacktrack import *
 from utilities import *
 import time

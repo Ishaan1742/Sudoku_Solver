@@ -6,7 +6,7 @@ import json
 import numpy as np
 from Backtrack import backtrack, backtrack_visualiser
 from greedyBacktrack import greedyBacktrack, greedyBacktrack_visualiser
-from spiralBacktrack import spiralBacktrack, spiralBacktrack_visualiser
+from zigzagBacktrack import zigzagBacktrack, zigzagBacktrack_visualiser
 from reverseBacktrack import reverseBacktrack, reverseBacktrack_visualiser
 from utilities import ConvertToChar, EnterBoard, printBoard
 import time
