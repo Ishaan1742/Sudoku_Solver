@@ -1,4 +1,4 @@
-from utilities import isSafe, printBoard
+from utilities import isSafe, printBoard, assign
 
 # Reverse Backtrack algorithm is same as the backtrack algorithm but
 # differs in the fact that it follows a bottom-top and right-left approach.
@@ -20,6 +20,19 @@ def reverseBacktrack(board):
                         if reverseBacktrack(board):
                             return True # board is filled
                         board[row][col] = 0 # backtrack
+                return False # board is not filled
+    return True # board is filled
+
+def reverseBacktrack_visualiser(board):
+    for row in range(8, -1, -1):
+        for col in range(8, -1, -1):
+            if board[row][col] == 0:
+                for num in range(1, 10):
+                    if isSafe(board, row, col, num):
+                        assign(board, row, col, num) # fill the cell with the number
+                        if reverseBacktrack_visualiser(board):
+                            return True # board is filled
+                        assign(board, row, col, 0) # backtrack
                 return False # board is not filled
     return True # board is filled
 

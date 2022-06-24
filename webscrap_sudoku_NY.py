@@ -6,8 +6,8 @@ import json
 import numpy as np
 from Backtrack import backtrack, backtrack_visualiser
 from greedyBacktrack import greedyBacktrack, greedyBacktrack_visualiser
-from spiralBacktrack import spiralBacktrack
-from reverseBacktrack import reverseBacktrack
+from spiralBacktrack import spiralBacktrack, spiralBacktrack_visualiser
+from reverseBacktrack import reverseBacktrack, reverseBacktrack_visualiser
 from utilities import ConvertToChar, EnterBoard, printBoard
 import time
 
@@ -34,7 +34,7 @@ def direct_enter(grid):
     EnterBoard(grid) # enter the grid into the website
 
 time.sleep(0.5) # wait for 0.5 second
-greedyBacktrack_visualiser(grid) # visualise the backtrack
+reverseBacktrack_visualiser(grid) # visualise the backtrack
 #direct_enter(grid) # enter the grid into the website
 
 
