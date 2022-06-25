@@ -23,9 +23,23 @@ This Script is a Sudoku Solver that is designed to get values form the daily sud
 - The algorithm also shows gives a visual of how the algorithm computes the value.
 
 ## Requirements:
-In order to run the Script, the require **Python & PyGame** and you can install the requirements using:
+For automating chrome webbrowser , path to chrome.exe needed to provided.
+Defualt locations:
++ Mac: 
 ```
-pip install -r requirements.txt
+path = 'open -a /Applications/Google\ Chrome.app %s --incognito'
+```
++ Windows: 
+```
+path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s --incognito'
+```
+or 
+```
+path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s --incognito'
+```
++ Linux: 
+```
+path = '/usr/bin/google-chrome %s --incognito'
 ```
 
 ## Execution:
