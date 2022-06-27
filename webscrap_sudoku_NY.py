@@ -11,6 +11,7 @@ from utilities import ConvertToChar, EnterBoard, printBoard
 import time
 from sys import platform
 import os
+import pyautogui as pg
 
 difficulty = "hard"
 url = "https://www.nytimes.com/puzzles/sudoku/" + difficulty
@@ -37,11 +38,11 @@ grid = np.array( Dict[difficulty]["puzzle_data"]["puzzle"] ).reshape(9,9).tolist
 def direct_enter(grid):
     greedyBacktrack(grid) # solve the puzzle using greedy backtrack
     grid = ConvertToChar(grid) # convert the grid to characters
-    time.sleep(1) # wait for the page to load
     printBoard(grid) # print the grid
     EnterBoard(grid) # enter the grid into the website
 
-#time.sleep(1) # wait for 1 second
+time.sleep(3) # wait for 3 seconds
+pg.press('left', presses = 9) # press left nine times to ensure that the first cell is selected
 greedyBacktrack_visualiser(grid) # visualise the backtrack
 #direct_enter(grid) # enter the grid into the website
 

@@ -47,7 +47,7 @@ def getInput():
     return board
 
 def assign(board, row, col, num, curr_row = 0, curr_col = 0):
-    board[row][col] = num #assign the number to the cell
+    board[row][col] = num
     #go to cell
     if(row<curr_row):
         pg.press('up', presses=curr_row-row)
@@ -68,7 +68,6 @@ def assign(board, row, col, num, curr_row = 0, curr_col = 0):
 
     
 def EnterBoard(board): #enter the board into the sudoku website
-    pg.press('left', presses=9) #go to the first cell, in all cases.
     for i in range(9):
         for j in range(9):
             pg.press(board[i][j])
