@@ -47,7 +47,7 @@ def getInput():
     return board
 
 def assign(board, row, col, num, curr_row = 0, curr_col = 0):
-    board[row][col] = num
+    board[row][col] = num #assign the number to the cell
     #go to cell
     if(row<curr_row):
         pg.press('up', presses=curr_row-row)
