@@ -37,11 +37,11 @@ grid = np.array( Dict[difficulty]["puzzle_data"]["puzzle"] ).reshape(9,9).tolist
 def direct_enter(grid):
     greedyBacktrack(grid) # solve the puzzle using greedy backtrack
     grid = ConvertToChar(grid) # convert the grid to characters
+    time.sleep(1) # wait for the page to load
     printBoard(grid) # print the grid
-    time.sleep(1) # wait for 1 second
     EnterBoard(grid) # enter the grid into the website
 
-time.sleep(1) # wait for 1 second
+#time.sleep(1) # wait for 1 second
 #greedyBacktrack_visualiser(grid) # visualise the backtrack
 direct_enter(grid) # enter the grid into the website
 
